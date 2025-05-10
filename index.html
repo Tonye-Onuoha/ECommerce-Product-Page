@@ -6,6 +6,10 @@
     <!-- displays site properly based on user's device -->
 
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <!-- GOOGLE fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet" />
     <!-- custom CSS link -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
@@ -14,7 +18,13 @@
     <style>
       .attribution {
         font-size: 11px;
+        font-family: "Kumbh Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
+        font-variation-settings: "YOPQ" 300;
         text-align: center;
+        margin-top: 20px;
       }
       .attribution a {
         color: hsl(228, 45%, 44%);
@@ -25,12 +35,12 @@
     <header>
       <div class="mobile-header">
         <div class="header-group-1">
-          <img src="#" alt="open-menu icon image" />
-          <img src="#" alt="website logo" />
+          <img src="images/icon-menu.svg" alt="open-menu icon image" />
+          <img src="images/logo.svg" alt="website logo" />
         </div>
         <div class="header-group-2">
-          <img src="#" alt="cart icon image" />
-          <img src="#" alt="profile avatar" />
+          <img src="images/icon-cart.svg" alt="cart icon image" />
+          <img src="images/image-avatar.png" alt="profile avatar" />
         </div>
       </div>
       <div class="desktop-header" style="display: none">
@@ -54,12 +64,12 @@
       </div>
     </header>
     <main>
-      <div class="container">
+      <div class="container kumbh-sans-font">
         <div class="mobile-background-image-container">
-          <img src="#" alt="previous icon image" />
-          <img src="#" alt="next icon image" />
+          <img src="images/icon-previous.svg" alt="previous icon image" />
+          <img src="images/icon-next.svg" alt="next icon image" />
         </div>
-        <div class="desktop-background-container">
+        <div class="desktop-background-container" style="display: none">
           <div class="desktop-background-image-container"></div>
           <div class="desktop-products-container">
             <img src="#" alt="product-1" />
@@ -69,29 +79,68 @@
           </div>
         </div>
         <div class="product-info-container">
-          <div class="product-details">
-            <p>Sneaker Company</p>
-            <h1>Fall Limited Edition Sneakers</h1>
-            <p>
+          <div class="product-details-container">
+            <p id="title">Sneaker Company</p>
+            <h1 class="heading">Fall Limited Edition Sneakers</h1>
+            <p id="description">
               These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
               they’ll withstand everything the weather can offer.
             </p>
           </div>
           <div class="product-price-container">
-            <p>$125.00 <span>50%</span></p>
-            <p>$250.00</p>
+            <div class="price">
+              <h1 class="heading">$125.00</h1>
+              <p>50%</p>
+            </div>
+
+            <p class="discount">$250.00</p>
           </div>
           <div class="product-checkout-container">
-            <div class="buttons container">
-              <img src="#" alt="minus icon image" role="button" />
+            <div class="buttons-container">
+              <div class="image-container">
+                <img src="images/icon-minus.svg" alt="minus icon image" role="button" />
+              </div>
               <span>0</span>
-              <img src="#" alt="plus icon image" role="button" />
+              <div class="image-container">
+                <img src="images/icon-plus.svg" alt="plus icon image" role="button" />
+              </div>
             </div>
             <button>
-              <img src="images/icon-cart.svg" alt="cart-icon" />
+              <img src="images/icon-button-cart.svg" alt="button cart-icon image" />
               <span>Add to cart</span>
             </button>
           </div>
+        </div>
+      </div>
+      <!-- MOBILE NAVIGATION SECTION -->
+      <div class="mobile-overlay"></div>
+      <div class="mobile-menu" role="navigation">
+        <div class="menu-close-container">
+          <img src="images/icon-close.svg" alt="menu-close icon" role="button" />
+        </div>
+        <div class="mobile-navigation">
+          <ul role="menu">
+            <li><a>Collections</a></li>
+            <li><a>Men</a></li>
+            <li><a>Women</a></li>
+            <li><a>About</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- MOBILE CART SECTION -->
+      <div class="mobile-cart">
+        <div class="cart-header"><p>Cart</p></div>
+        <div class="cart-item-container">
+          <div class="cart-item-info">
+            <img src="images/image-product-1-thumbnail.jpg" alt="cart item thumbnail" />
+            <div class="cart-item">
+              <p class="item-name">Fall Limited Edition Sneakers</p>
+              <p class="item-cost">$125.00 x 3 <span>$375.00</span></p>
+            </div>
+            <img src="images/icon-delete.svg" alt="delete icon image" />
+          </div>
+          <button class="checkout-button">Checkout</button>
         </div>
       </div>
     </main>
