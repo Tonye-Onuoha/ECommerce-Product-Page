@@ -11,6 +11,8 @@
     font-family: "Kumbh Sans", sans-serif;
 }
 
+/* MOBILE LAYOUT */
+
 html {
     width: 100%;
 }
@@ -44,6 +46,10 @@ img[alt="cart icon image"] {
 img[alt="profile avatar"] {
     width: 25px;
     height: 25px;
+}
+
+.desktop-header {
+    display: none;
 }
 
 main {
@@ -84,6 +90,10 @@ p#description {
     background-position: center;
     background-size: cover;
     position: relative;
+}
+
+.desktop-background-container {
+    display: none;
 }
 
 img[alt="previous icon image"],
@@ -163,7 +173,7 @@ img[alt="next icon image"] {
 
 .buttons-container {
     width: 100%;
-    padding: 20px;
+    padding: 16px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -175,7 +185,7 @@ img[alt="next icon image"] {
 button {
     border: none;
     border-radius: 0.75em;
-    padding: 1.3em;
+    padding: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -243,7 +253,7 @@ ul {
 /* MOBILE CART */
 
 .mobile-cart {
-    display: block;
+    display: none;
     position: absolute;
     top: 75px;
     left: 0;
@@ -289,4 +299,217 @@ img[alt="cart item thumbnail"] {
     margin-top: 20px;
     width: 100%;
     box-shadow: none;
+}
+
+/* DESKTOP LAYOUT */
+
+@media screen and (min-width: 960px) {
+    header {
+        max-width: 1100px;
+        margin: 0 auto 0 auto;
+        padding-bottom: 25px;
+        border-bottom: 1px solid lightgray;
+    }
+    .mobile-header {
+        display: none;
+    }
+    .desktop-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+
+    ul {
+        padding: 0;
+    }
+    .header-group-1 {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    li {
+        display: inline;
+        margin-left: 30px;
+        padding: 35px 0;
+        color: hsl(219, 9%, 45%);
+    }
+    .header-group-2 {
+        width: 10%;
+        display: flex;
+        align-items: center;
+    }
+    img[alt="cart icon image"] {
+        margin-right: 40px;
+    }
+    img[alt="profile avatar"] {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .container {
+        display: flex;
+        max-width: 1100px;
+        margin: 100px auto;
+    }
+    .mobile-background-image-container {
+        display: none;
+    }
+    .desktop-background-container {
+        display: flex;
+        flex-direction: column;
+        width: 43%;
+        gap: 30px;
+        padding-left: 50px;
+        box-sizing: border-box;
+    }
+    .desktop-background-image-container {
+        width: 100%;
+        height: 400px;
+        background-image: url("../images/image-product-1.jpg");
+        background-position: center;
+        background-size: cover;
+        border-radius: 15px;
+    }
+    .product-info-container {
+        width: 57%;
+        padding: 50px 100px;
+        box-sizing: border-box;
+    }
+    .desktop-products-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    img[alt="product-1"],
+    img[alt="product-2"],
+    img[alt="product-3"],
+    img[alt="product-4"] {
+        width: 87.5px;
+        border-radius: 10px;
+    }
+    .product-price-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .product-checkout-container {
+        flex-direction: row;
+    }
+    .buttons-container {
+        width: 40%;
+    }
+    button {
+        width: 60%;
+        box-shadow: none;
+    }
+    /* DESKTOP CART */
+    .desktop-cart {
+        position: absolute;
+        top: 85px;
+        right: 4%;
+        min-width: 390px;
+        width: 25%;
+        min-height: 250px;
+        border-radius: 10px;
+        margin: 0 auto;
+        background-color: hsl(0, 0%, 100%);
+        box-shadow: 15px 15px 30px gray;
+    }
+    /* ACTIVE STATE */
+    li:hover {
+        cursor: pointer;
+        border-bottom: 5px solid hsl(26, 100%, 55%);
+    }
+    img[alt="cart icon image"]:hover {
+        cursor: pointer;
+    }
+    img[alt="profile avatar"]:hover {
+        cursor: pointer;
+        outline: 2px solid hsl(26, 100%, 55%);
+    }
+    img[alt="product-1"]:hover,
+    img[alt="product-2"]:hover,
+    img[alt="product-3"]:hover,
+    img[alt="product-4"]:hover {
+        cursor: pointer;
+        opacity: 0.75;
+    }
+
+    img[alt="minus icon image"]:hover,
+    img[alt="plus icon image"]:hover {
+        cursor: pointer;
+    }
+    button:hover {
+        cursor: pointer;
+        background-color: hsla(26, 100%, 55%, 0.75);
+    }
+    /* LIGHTBOX */
+    .desktop-overlay {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background-color: hsla(0, 0%, 0%, 0.75);
+    }
+    .lightbox-container {
+        display: none;
+        width: 30%;
+        height: fit-content;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .close-icon-container {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+    .close-icon-container img {
+        width: 20px;
+    }
+    .lightbox-background-image-container {
+        height: 500px;
+        background-image: url("../images/image-product-1.jpg");
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        margin-bottom: 35px;
+        border-radius: 15px;
+    }
+    img[alt="previous icon image"] {
+        left: -25px;
+        padding: 20px;
+    }
+
+    img[alt="next icon image"] {
+        right: -25px;
+        padding: 20px;
+    }
+    .lightbox-products-container {
+        display: flex;
+        justify-content: space-around;
+    }
+    .lightbox-products-container > img {
+        width: 80px;
+    }
+    .lightbox-products-container img:nth-child(1) {
+        margin-left: 30px;
+    }
+    .lightbox-products-container img:nth-child(4) {
+        margin-right: 30px;
+    }
+    /* LIGHTBOX STATES */
+    img[alt="previous icon image"]:hover,
+    img[alt="next icon image"]:hover {
+        cursor: pointer;
+    }
 }
