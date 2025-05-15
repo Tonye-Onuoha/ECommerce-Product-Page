@@ -41,6 +41,7 @@
         <div class="header-group-2">
           <img src="images/icon-cart.svg" alt="cart icon image" />
           <img src="images/image-avatar.png" alt="profile avatar" />
+          <p class="cart-notification">0</p>
         </div>
       </div>
       <div class="desktop-header">
@@ -60,6 +61,7 @@
         <div class="header-group-2">
           <img src="images/icon-cart.svg" alt="cart icon image" />
           <img src="images/image-avatar.png" alt="profile avatar" />
+          <p class="cart-notification">0</p>
         </div>
       </div>
     </header>
@@ -100,7 +102,7 @@
               <div class="image-container">
                 <img src="images/icon-minus.svg" alt="minus icon image" role="button" />
               </div>
-              <span>0</span>
+              <span id="item-count">0</span>
               <div class="image-container">
                 <img src="images/icon-plus.svg" alt="plus icon image" role="button" />
               </div>
@@ -116,7 +118,7 @@
       <div class="mobile-overlay"></div>
       <div class="mobile-menu" role="navigation">
         <div class="menu-close-container">
-          <img src="images/icon-close.svg" alt="menu-close icon" role="button" />
+          <img src="images/icon-close.svg" alt="close-menu icon image" role="button" />
         </div>
         <div class="mobile-navigation">
           <ul role="menu">
@@ -136,11 +138,15 @@
             <img src="images/image-product-1-thumbnail.jpg" alt="cart item thumbnail" />
             <div class="cart-item">
               <p class="item-name">Fall Limited Edition Sneakers</p>
-              <p class="item-cost">$125.00 x 3 <span>$375.00</span></p>
+              <p>
+                <span class="item-cost">$125.00 x </span><span class="item-count-text">3</span>
+                <span><b class="cart-total">$375.00</b></span>
+              </p>
             </div>
             <img src="images/icon-delete.svg" alt="delete icon image" />
           </div>
           <button class="checkout-button">Checkout</button>
+          <p style="display: none" class="empty-cart"><b>Your cart is empty.</b></p>
         </div>
       </div>
       <!-- DESKTOP CART SECTION -->
@@ -151,11 +157,15 @@
             <img src="images/image-product-1-thumbnail.jpg" alt="cart item thumbnail" />
             <div class="cart-item">
               <p class="item-name">Fall Limited Edition Sneakers</p>
-              <p class="item-cost">$125.00 x 3 <span>$375.00</span></p>
+              <p>
+                <span class="item-cost">$125.00 x </span><span class="item-count-text">3</span>
+                <span><b class="cart-total">$375.00</b></span>
+              </p>
             </div>
             <img src="images/icon-delete.svg" alt="delete icon image" />
           </div>
           <button class="checkout-button">Checkout</button>
+          <p style="display: none" class="empty-cart"><b>Your cart is empty.</b></p>
         </div>
       </div>
       <!-- DESKTOP LIGHTBOX SECTION -->
@@ -183,5 +193,6 @@
         >.
       </div>
     </footer>
+    <script src="js/ecommerce.js"></script>
   </body>
 </html>
