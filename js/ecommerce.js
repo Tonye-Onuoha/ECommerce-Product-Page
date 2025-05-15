@@ -81,10 +81,18 @@ const photoPicker = (button, display) => {
             photoPickerIndex++;
             if (photoPickerIndex > photosArray.length - 1) photoPickerIndex = 0;
             lightboxImageContainer.style.backgroundImage = `url(${photosArray[photoPickerIndex]})`;
+            // if a lightbox thumbnail has already been selected previously, reset its style.
+            if (lightboxThumbnailIsSelected) resetLightboxThumbnail();
+            // mark/select the respective thumbnail of the large product image in the lightbox gallery.
+            styleThumbnail(null, lightboxThumbnailArray[photoPickerIndex]);
         } else if (button == "previous") {
             photoPickerIndex--;
             if (photoPickerIndex < 0) photoPickerIndex = photosArray.length - 1;
             lightboxImageContainer.style.backgroundImage = `url(${photosArray[photoPickerIndex]})`;
+            // if a lightbox thumbnail has already been selected previously, reset its style.
+            if (lightboxThumbnailIsSelected) resetLightboxThumbnail();
+            // mark/select the respective thumbnail of the large product image in the lightbox gallery.
+            styleThumbnail(null, lightboxThumbnailArray[photoPickerIndex], null);
         }
     }
 };
@@ -117,9 +125,19 @@ const imageSwitcher = (e, container, thumbnailArray, index) => {
 };
 
 // This function sets the styling of the selected thumbnail.
-const styleThumbnail = (e) => {
-    e.currentTarget.style.outline = "2px solid hsl(26, 100%, 55%)";
-    e.currentTarget.style.opacity = 0.5;
+const styleThumbnail = (e, lightboxThumbnail, productThumbnail) => {
+    if (e) {
+        e.currentTarget.style.outline = "2px solid hsl(26, 100%, 55%)";
+        e.currentTarget.style.opacity = 0.5;
+    } else if (lightboxThumbnail) {
+        lightboxThumbnail.style.outline = "2px solid hsl(26, 100%, 55%)";
+        lightboxThumbnail.style.opacity = 0.5;
+        lightboxThumbnailIsSelected = true;
+    } else {
+        productThumbnail.style.outline = "2px solid hsl(26, 100%, 55%)";
+        productThumbnail.style.opacity = 0.5;
+        productThumbnailIsSelected = true;
+    }
 };
 
 // This function resets the styling of the selected product thumbnail in the main desktop web page.
@@ -147,6 +165,7 @@ const showLightbox = () => {
     desktopOverlay.style.display = "block";
     lightboxContainer.style.display = "block";
     lightboxImageContainer.style.backgroundImage = desktopImageContainer.style.backgroundImage;
+    styleThumbnail(null, lightboxThumbnailArray[photoPickerIndex]);
     if (productThumbnailIsSelected) resetProductThumbnail();
 };
 
@@ -155,6 +174,7 @@ const hideLightbox = () => {
     desktopOverlay.style.display = "none";
     lightboxContainer.style.display = "none";
     desktopImageContainer.style.backgroundImage = lightboxImageContainer.style.backgroundImage;
+    styleThumbnail(null, null, productsThumbnailArray[photoPickerIndex]);
     if (lightboxThumbnailIsSelected) resetLightboxThumbnail();
 };
 
