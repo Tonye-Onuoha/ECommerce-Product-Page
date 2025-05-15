@@ -1,4 +1,5 @@
 // MOBILE & DESKTOP ELEMENTS
+const mainElement = document.querySelector("main");
 const mobileOpenMenuButton = document.querySelector("img[alt='open-menu icon image']");
 const mobileCloseMenuButton = document.querySelector("img[alt='close-menu icon image']");
 const mobileOverlay = document.querySelector(".mobile-overlay");
@@ -14,7 +15,7 @@ const desktopCartItemInfo = cartItemInfo[1];
 const cartNotification = document.querySelectorAll(".cart-notification");
 const mobileCartNotification = cartNotification[0];
 const desktopCartNotification = cartNotification[1];
-const CartAddButton = document.querySelector("button");
+const cartAddButton = document.querySelector("button");
 const removeItemButtons = document.querySelectorAll("img[alt='delete icon image']");
 const mobileRemoveItemButton = removeItemButtons[0];
 const desktopRemoveItemButton = removeItemButtons[1];
@@ -98,16 +99,18 @@ const photoPicker = (button, display) => {
 };
 
 // This function switches the large product image on both the desktop layout and lightbox gallery.
-const imageSwitcher = (e, container, thumbnailArray, index) => {
+const imageSwitcher = (e, thumbnailType, index) => {
+    // prevent default event propagation.
+    e.stopPropagation();
     // if a product thumbnail in the desktop layout has already been selected, reset its styling.
-    if (thumbnailArray == "products-thumbnail" && productThumbnailIsSelected) {
+    if (thumbnailType == "products-thumbnail" && productThumbnailIsSelected) {
         resetProductThumbnail();
         // if a product thumbnail in the lightbox gallery has already been selected, reset its styling.
-    } else if (thumbnailArray == "lightbox-thumbnail" && lightboxThumbnailIsSelected) {
+    } else if (thumbnailType == "lightbox-thumbnail" && lightboxThumbnailIsSelected) {
         resetLightboxThumbnail();
     }
     // mark the appropriate thumbnail as selected.
-    if (thumbnailArray == "products-thumbnail") {
+    if (thumbnailType == "products-thumbnail") {
         productThumbnailIsSelected = true;
     } else {
         lightboxThumbnailIsSelected = true;
@@ -115,7 +118,7 @@ const imageSwitcher = (e, container, thumbnailArray, index) => {
     // style the currently selected thumbnail.
     styleThumbnail(e);
     // update the appropriate image container depending on the thumbnail.
-    if (container == "desktop-image-container") {
+    if (thumbnailType == "products-thumbnail") {
         desktopImageContainer.style.backgroundImage = `url(${photosArray[index]})`;
     } else {
         lightboxImageContainer.style.backgroundImage = `url(${photosArray[index]})`;
@@ -170,7 +173,8 @@ const showLightbox = () => {
 };
 
 // This functions hides the lightbox gallery.
-const hideLightbox = () => {
+const hideLightbox = (e) => {
+    e.stopPropagation(); // prevent default event propagation.
     desktopOverlay.style.display = "none";
     lightboxContainer.style.display = "none";
     desktopImageContainer.style.backgroundImage = lightboxImageContainer.style.backgroundImage;
@@ -327,6 +331,10 @@ const removeFromCart = () => {
 
 /* Event Listeners */
 
+mainElement.addEventListener("click", () => {
+    if (productThumbnailIsSelected) resetProductThumbnail();
+});
+
 mobileOpenMenuButton.addEventListener("click", openMobileNavigation);
 
 mobileCloseMenuButton.addEventListener("click", closeMobileNavigation);
@@ -339,7 +347,7 @@ mobileCartButton.addEventListener("click", toggleCart);
 
 desktopCartButton.addEventListener("click", toggleCart);
 
-CartAddButton.addEventListener("click", addToCart);
+cartAddButton.addEventListener("click", addToCart);
 
 mobileRemoveItemButton.addEventListener("click", removeFromCart);
 
@@ -362,7 +370,7 @@ lightboxPreviousButton.addEventListener("mouseover", HoverLightboxPrevious);
 lightboxPreviousButton.addEventListener("mouseout", HoverLightboxPrevious);
 
 productsThumbnailArray.forEach((thumbnail, index) =>
-    thumbnail.addEventListener("click", (e) => imageSwitcher(e, "desktop-image-container", "products-thumbnail", index))
+    thumbnail.addEventListener("click", (e) => imageSwitcher(e, "products-thumbnail", index))
 );
 
 desktopImageContainer.addEventListener("click", showLightbox);
@@ -374,5 +382,5 @@ closeLightboxButton.addEventListener("mouseover", HoverLightboxClose);
 closeLightboxButton.addEventListener("mouseout", HoverLightboxClose);
 
 lightboxThumbnailArray.forEach((thumbnail, index) =>
-    thumbnail.addEventListener("click", (e) => imageSwitcher(e, "lighbox-image-container", "lightbox-thumbnail", index))
+    thumbnail.addEventListener("click", (e) => imageSwitcher(e, "lightbox-thumbnail", index))
 );
