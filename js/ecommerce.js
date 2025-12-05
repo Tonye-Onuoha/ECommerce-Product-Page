@@ -93,7 +93,7 @@ const photoPicker = (button, display) => {
             // if a lightbox thumbnail has already been selected previously, reset its style.
             if (lightboxThumbnailIsSelected) resetLightboxThumbnail();
             // mark/select the respective thumbnail of the large product image in the lightbox gallery.
-            styleThumbnail(null, lightboxThumbnailArray[photoPickerIndex], null);
+            styleThumbnail(null, lightboxThumbnailArray[photoPickerIndex]);
         }
     }
 };
@@ -212,14 +212,14 @@ const closeMobileNavigation = () => {
     mobileNavigation.style.display = "none";
 };
 
-// This functions decrements the item count for a particular order.
+// This functions decrements the order count for a particular order.
 const decreaseItemCount = () => {
     if (orderCount == 0) return;
     orderCount--;
     orderCountNumber.textContent = orderCount;
 };
 
-// This functions increments the item count for a particular order.
+// This functions increments the order count for a particular order.
 const increaseItemCount = () => {
     orderCount++;
     orderCountNumber.textContent = orderCount;
